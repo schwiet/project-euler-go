@@ -6,11 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2019-10-13
+### Added
+- Solution to Problem 4 - **Largest Palindrome Product**
+- utility function: `ReverseDigits( int ) int`
+
+
 ## [0.0.3] - 2019-10-12
 ### Added
 - Solution to Problem 3 - **Largest Prime Factor**
 - utility function: `GetFactors( int ) []int`
 - utility function: `IsPrime( int ) bool`
+
 
 ## [0.0.2] - 2019-10-11
 ### Added

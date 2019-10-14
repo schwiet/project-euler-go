@@ -46,3 +46,26 @@ func GetFactors(num int) []int{
 
     return result
 }
+
+/*
+    ReverseDigits takes num and returns an integer whose digits are in the
+    opposite order: e.g 12345 -> 54321
+ */
+func ReverseDigits(num int) int {
+    var digit int
+    var result, next, current int = 0, num, num
+
+    for ; next > 0; {
+        // get the next digit by subtracting the current number from itself, but
+        // with the loss of percision of the ones place
+        next /= 10
+        digit = ( current - ( next * 10 ) )
+        // ready for next iteration
+        current = next
+
+        // multiply the result by 10 and add the single digit
+        result = result * 10 + digit
+    }
+
+    return result
+}
