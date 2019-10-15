@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.0.6] - 2019-10-15
+### Added
+- Solution to Problem 6 - **Sum Square Difference**
+
+
 ## [0.0.5] - 2019-10-14
 ### Added
 - Solution to Problem 5 - **Smallest Multiple**
