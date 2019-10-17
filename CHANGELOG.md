@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.0.7] - 2019-10-16
+### Added
+- Solution to Problem 7 - **10001st Prime**
+
+
 ## [0.0.6] - 2019-10-15
 ### Added
 - Solution to Problem 6 - **Sum Square Difference**
