@@ -1,6 +1,7 @@
 package main
 
 import (
+    "github.com/schwiet/project-euler-go/utils"
     "fmt"
 )
 
@@ -53,7 +54,41 @@ func main(){
         0,7,1,9,8,4,0,3,8,5,0,9,6,2,4,5,5,4,4,4,3,6,2,9,8,1,2,3,0,9,8,7,8,7,9,9,2,7,2,4,4,2,8,4,9,0,9,1,8,8,
         8,4,5,8,0,1,5,6,1,6,6,0,9,7,9,1,9,1,3,3,8,7,5,4,9,9,2,0,0,5,2,4,0,6,3,6,8,9,9,1,2,5,6,0,7,1,7,6,0,6,
         0,5,8,8,6,1,1,6,4,6,7,1,0,9,4,0,5,0,7,7,5,4,1,0,0,2,2,5,6,9,8,3,1,5,5,2,0,0,0,5,5,9,3,5,7,2,9,7,2,5,
-        7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0
+        7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0 }
+
+    digitCount := 13
+
+    // get initial product
+    current := utils.GetSliceProduct( seq[0:digitCount] )
+    max := current
+
+    for i := 1; i + digitCount < len( seq ); i += 1 {
+        // get the value that's falling out of range
+        v := seq[ i - 1 ]
+
+        // if it equals 0, we don't have enough info to easily calculate the new
+        // product, so recalculate it.
+        if v == 0 {
+            current = utils.GetSliceProduct( seq[ i:i+digitCount ] )
+        }else{
+            // This is a minor optimization. There is no need to recalculate
+            // the product by iterating thru each item again, we can divide by
+            // the number that is falling out of range and then multiply by
+            // the number that is coming into range
+
+            // get the product without the value, by dividing it from the
+            // current product
+            current /= v
+            // now multiply by the next digit in the sequence
+            current *= seq[ i + digitCount - 1 ]
+        }
+
+        // denote the number, if it is the largest we've seen so far.
+        if current > max {
+            max = current
+        }
     }
 
+    // should print: 23514624000
+    fmt.Println( "Largest", digitCount, "product in sequence is:", max )
 }

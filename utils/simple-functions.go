@@ -69,3 +69,14 @@ func ReverseDigits(num int) int {
 
     return result
 }
+
+/*
+    Multiply each item in the slice to get the product
+ */
+func GetSliceProduct( slice []int ) int{
+    product := 1
+    for _, v := range slice {
+        product *= v
+    }
+    return product
+}
