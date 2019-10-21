@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.0.9] - 2019-10-20
+### Added
+- Solution to Problem 9 - **Special Pythagorean Triplet**
+
+
 ## [0.0.8] - 2019-10-18
 ### Added
 - Solution to Problem 8 - **Largest Product in a Series**
