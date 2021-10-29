@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.12] - 2020-01-17
+### Added
+- Solution to Problem 12 - **Highly Divisible Triangular Number**
+
+
 ## [0.0.11] - 2019-10-28
 ### Added
 - Solution to Problem 11 - **Largest Product in a Grid**
