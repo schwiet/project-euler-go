@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.14] - 2021-11-14
+### Added
+- Solution to Problem 14 - **Largest Collatz sequence**
+
 
 ## [0.0.13] - 2021-11-01
 ### Added
