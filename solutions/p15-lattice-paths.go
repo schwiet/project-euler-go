@@ -25,24 +25,47 @@ func createAllPerms(gridSize uint64) uint64 {
 	downs := gridSize
 	rights := gridSize
 
-	permutations := takeStep(downs, rights, 0)
+	cache := pathMemo{make(map[uint64]map[uint64]uint64)}
+	permutations := cache.pathsFrom(downs, rights)
 	return permutations
 }
 
-// recursive function to take all of the possible step permutations
-func takeStep(remDown, remRight, sum uint64) uint64 {
+type pathMemo struct {
+	cached map[uint64]map[uint64]uint64
+}
+
+func (p *pathMemo) pathsFrom(remDown, remRight uint64) uint64 {
+	// first, check for cached value
+	r, ok := p.cached[remDown]
+	if ok {
+		c, ok := r[remRight]
+		if ok {
+			return c
+		}
+	} else {
+		r = make(map[uint64]uint64)
+		p.cached[remDown] = r
+	}
+	//
+	var sum uint64 = 0
+
+	// reached the end
 	if remDown == 0 && remRight == 0 {
-		return sum + 1
+		return 1
 	}
 
+	// if there can be any more steps down, make recursive call
 	if remDown > 0 {
-		sum = takeStep(remDown-1, remRight, sum)
+		sum += p.pathsFrom(remDown-1, remRight)
 	}
 
+	// if there can be any more steps right, make recursive call
 	if remRight > 0 {
-		sum = takeStep(remDown, remRight-1, sum)
+		sum += p.pathsFrom(remDown, remRight-1)
 	}
 
+	// cache the sum calculated for this grid: remDown, remRight
+	r[remRight] = sum
 	return sum
 }
 
