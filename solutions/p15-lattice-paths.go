@@ -11,13 +11,70 @@ import (
   How many such routes are there through a 20×20 grid?
 */
 
-const GRID_SIZE uint64 = 12
+const GRID_SIZE uint64 = 20
 
 func main() {
 
-	paths := brute(GRID_SIZE)
+	// paths := brute(GRID_SIZE)
+	// paths := calcPerms(GRID_SIZE)
+	paths := createAllPerms(GRID_SIZE)
 	fmt.Println("For a Grid of", GRID_SIZE, ", there are", paths, "paths.")
 }
+
+func createAllPerms(gridSize uint64) uint64 {
+	downs := gridSize
+	rights := gridSize
+
+	permutations := takeStep(downs, rights, 0)
+	return permutations
+}
+
+// recursive function to take all of the possible step permutations
+func takeStep(remDown, remRight, sum uint64) uint64 {
+	if remDown == 0 && remRight == 0 {
+		return sum + 1
+	}
+
+	if remDown > 0 {
+		sum = takeStep(remDown-1, remRight, sum)
+	}
+
+	if remRight > 0 {
+		sum = takeStep(remDown, remRight-1, sum)
+	}
+
+	return sum
+}
+
+/*
+ * CAN'T BE CALCULATED WITH 64 bits
+ */
+
+func calcPerms(gridSize uint64) uint64 {
+	steps := gridSize * 2
+	n := factorialWithRange(steps, gridSize)
+	r := factorial(gridSize)
+	fmt.Println(n, r)
+	return n / r
+}
+
+func factorialWithRange(start, end uint64) uint64 {
+
+	var value uint64 = 1
+	var i uint64
+	for i = start; i > end; i -= 1 {
+		value *= i
+	}
+	return value
+}
+
+func factorial(n uint64) uint64 {
+	return factorialWithRange(n, 0)
+}
+
+/*
+ * TAKES TOO LONG
+ */
 
 func brute(gridSize uint64) uint64 {
 	var steps, paths uint64
