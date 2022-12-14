@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.16] - 2022-12-13
+### Added
+- Solution to Problem 16 - **Power Digit Sum**
+
+
 ## [0.0.15] - 2021-11-16
 ### Added
 - Solution to Problem 15 - **Lattice Paths**
